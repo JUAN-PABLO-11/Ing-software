@@ -22,7 +22,8 @@ public class ReviewService {
 
     // Requisito 4b: esto sí guarda, cuando el usuario confirma
     public Review submit(Long bookId, String username, String content) {
-        Review review = new Review(idCounter.getAndIncrement(), bookId, username, content);
+        Review review = new Review(null, bookId, username, content);
         return reviewRepository.save(review);
     }
+
 }

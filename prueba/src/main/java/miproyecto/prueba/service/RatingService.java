@@ -20,7 +20,9 @@ public class RatingService {
         if (score < 1 || score > 5) {
             throw new IllegalArgumentException("La calificación debe ser entre 1 y 5");
         }
-        Rating rating = new Rating(idCounter.getAndIncrement(), bookId, username, score);
+        Rating rating = new Rating(null, bookId, username, score);
         return ratingRepository.save(rating);
     }
+
+
 }
