@@ -1,28 +1,13 @@
 package miproyecto.prueba.repository;
 
 import miproyecto.prueba.model.Rating;
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class RatingRepository {
+@Repository
+public interface RatingRepository extends JpaRepository<Rating, Long> {
 
-    private final List<Rating> ratings = new ArrayList<>();
-
-    public Rating save(Rating rating) {
-        ratings.add(rating);
-        return rating;
-    }
-
-    public List<Rating> findAll() {
-        return ratings;
-    }
-
-    public List<Rating> findByBookId(Long bookId) {
-        return ratings.stream()
-                .filter(r -> r.getBookId().equals(bookId))
-                .toList();
-    }
+    List<Rating> findByBookId(Long bookId);
 }
