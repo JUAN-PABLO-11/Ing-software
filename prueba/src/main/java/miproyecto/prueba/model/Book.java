@@ -1,10 +1,27 @@
 package miproyecto.prueba.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "books")
 public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String author;
+
+    @Column(unique = true)
     private String isbn;
+
+    public Book() {
+
+    }
 
     public Book(Long id, String title, String author, String isbn) {
         this.id = id;

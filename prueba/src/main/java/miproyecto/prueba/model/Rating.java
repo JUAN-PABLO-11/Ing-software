@@ -1,9 +1,22 @@
 package miproyecto.prueba.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "ratings")
 public class Rating {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column (nullable = false)
     private Long bookId;
+
+    @Column (nullable = false)
     private String username;
+
+    @Column  (nullable = false)
     private int score; // 1 a 5
 
     public Rating(Long id, Long bookId, String username, int score) {
@@ -11,6 +24,9 @@ public class Rating {
         this.bookId = bookId;
         this.username = username;
         this.score = score;
+    }
+
+    public Rating() {
     }
 
     public Long getId() {
